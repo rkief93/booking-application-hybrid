@@ -1,0 +1,63 @@
+<ion-view title="Booking Details" style="background-color:#4169E1;">
+  <ion-nav-buttons side="left">
+      <button class="button back-button buttons button-clear header-item" ng-click="goBack()">
+          <i class="icon ion-ios-arrow-back"> Back</i> 
+      </button>
+  </ion-nav-buttons>
+    <ion-content padding="true" style="background: url(img/2.jpg) no-repeat 
+		    center center fixed;
+		    -webkit-background-size: cover;
+		    -moz-background-size: cover;
+		    -o-background-size: cover;
+		    background-size: cover;" class="has-header">
+
+        <!-- <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+          </ion-refresher> -->
+
+        <div class="bar bar-header item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Search your bookings" ng-model="form.searchText" ng-change="onChange()">
+          </label>
+          <button class="button button-clear">
+            Cancel
+          </button>
+        </div>
+
+        <div ng-show="searchPresent" class="card" ng-repeat="bookDetail in bookDetails | filter:form.searchText">
+          <div class="item item-divider">
+            Sport :
+          </div>
+          <div class="item item-text-wrap">
+            {{ bookDetail.sport }}
+          </div>
+          <div class="item item-divider">
+            Court :
+          </div>
+          <div class="item item-text-wrap">
+            {{ bookDetail.court }}
+          </div>
+          <div class="item item-divider">
+            Date :
+          </div>
+          <div class="item item-item-wrap">
+            {{ bookDetail.date }}
+          </div>
+          <div class="item item-divider">
+            Time :
+          </div>
+          <div class="item item-text-wrap">
+            {{ bookDetail.timefrom }}-{{ bookDetail.timeto }}
+          </div>
+          <div class="item item-divider">
+            Status :
+          </div>
+          <div class="item item-text-wrap">
+            {{ bookDetail.status }}
+          </div>
+        </div>
+ 
+    </ion-content>
+</ion-view>

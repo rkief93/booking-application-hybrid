@@ -1,0 +1,50 @@
+<ion-view view-title="Signup" id="page6">
+  <ion-content class="padding-top">
+    <div class="text-center padding-top">
+    </div>
+    <div class="list list-insert">
+        <!-- full Name -->
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Full Name</span>
+        <input name="txtname" type="text" ng-model="user.name" placeholder="Full Name">
+      </label>
+
+        <!-- matric no. -->
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Matric No.</span>
+        <input type="number" ng-model="user.matric" placeholder="Matric No."
+        >
+      </label>
+
+      <!-- password -->
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Password</span>
+        <input type="password" ng-model="user.password" placeholder="Password"
+        >
+      </label>
+
+      <!-- faculty -->
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Faculty</span>
+        <input name="txtfac" type="text" ng-model="user.fac" placeholder="Faculty">
+      </label>
+
+      <!-- email -->
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Email</span>
+        <input name="txtemail" type="email" ng-model="user.email" placeholder="Email">
+      </label>
+
+      <!-- phone no. -->
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Phone No.</span>
+        <input name="txtphone" type="tel" ng-model="user.phone" placeholder="Phone No."
+        >
+      </label>
+
+    </div>
+    <div class="padding-top">
+      <button class="button button-full button-positive" ng-click="createUser()">Sign Up</button>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,52 @@
+<ion-view title="Profile" id="page15" style="background-color:#4169E1;">
+    <ion-content padding="true" style="background: url(img/2.jpg) no-repeat 
+		    center center fixed;
+		    -webkit-background-size: cover;
+		    -moz-background-size: cover;
+		    -o-background-size: cover;
+		    background-size: cover;" scroll="true" class="has-header">
+         
+          <div class="card">
+             <div class="item item-avatar" style="background-color:#839192; ">
+                 <img src="img/avatar.jpg">
+                 <label for="header">PROFILE BACKGROUND</label>
+             </div>
+            <div class="item item-text-wrap" style="background-color:#AAB7B8; ">
+              <form name="form1" method="post" action="">
+               <p>
+                 <label for="fullname">Full Name</label>
+                 <div type="text" name="first">
+                 {{ userProfile[0].fullname }}
+                 </div>
+               </p>
+               <p>
+                 <label for="nomatric">No matric</label>
+                 <div type="text" name="matricno" >
+                    {{ userProfile[0].nomatrik }}
+                 </div>
+               </p>
+               <p>
+                 <label for="email">Email Address</label>
+                 <div name="email" type="email" >
+                    {{ userProfile[0].email }}
+                 </div>
+               </p>
+               <p>
+                 <label for="faculty">Faculty</label>
+                 <div name="faculty" type="text" >
+                    {{ userProfile[0].faculty }}
+                 </div>
+               </p>
+               <p>
+                 <label for="notel">Phone No</label>
+                 <div name="notel" type="tel" >
+                    {{ userProfile[0].notel }}
+                 </div>
+               </p>         
+              </form>
+            </div>
+          </div>
+    </ion-content>
+</ion-view>
+
+

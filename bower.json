@@ -1,0 +1,17 @@
+{
+  "name": "HelloIonic",
+  "private": "true",
+  "homepage": "https://github.com/twinssbc/Ionic-Calendar",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.2.4"
+  },
+  "description": "A calendar directive for Ionic framework",
+    "main": [
+        "dist/css/calendar.css",
+        "dist/js/calendar-tpls.js"
+    ],
+    "keywords": [
+        "ionic",
+        "calendar"
+    ],
+}

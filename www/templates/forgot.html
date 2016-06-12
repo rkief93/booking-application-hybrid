@@ -1,0 +1,18 @@
+<ion-view view-title="Forgot Password">
+  <ion-content class="padding-top">
+    <div class="text-center padding">
+      <i class="icon ion-ios-infinite larger positive"></i>
+    </div>
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Email</span>
+        <input ng-model="user.email" placeholder="Email" type="email">
+      </label>
+    </div>
+      <div class="padding-top">
+          <button ng-click="resetpassword(user)" class="button button-block button-positive activated">
+                Reset Password
+            </button>
+    </div>
+  </ion-content>
+</ion-view>

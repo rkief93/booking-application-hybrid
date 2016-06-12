@@ -1,0 +1,210 @@
+angular.module('app.controllers', ['firebase'])
+ 
+
+.controller('mainPage', function($scope) {
+	
+})
+   
+.controller('signupCtrl', function($scope, $ionicModal, $state, $firebaseAuth, $ionicLoading, $rootScope) {
+	console.log('Login Controller Initialized');
+
+	var ref = new Firebase("https://booking-apps.firebaseio.com/");
+	var auth = $firebaseAuth(ref);
+
+$ionicModal.fromTemplateUrl('templates/signup.html', {
+	scope: $scope
+}).then(function (modal) {
+	$scope.modal = modal;
+});
+
+	$scope.createUser = function(user) {
+		console.log("Create User Function Called");
+		if (user && user.email && user.password) {
+			$ionicLoading.show({
+				template: 'Signing Up...'
+			});	
+
+			auth.$createUser({
+				fname: user.name,
+				matricNo: user.matric,
+				email: user.email,
+				password: user.password,
+				faculty: user.fac,
+				phone: user.phone
+
+			}).then(function (userData) {
+				alert("User created successfully!");
+				ref.child("users").child(userData.uid).set ({
+					fName: user.name,
+					matricNo: user.matric,
+					email: user.email,
+					password: user.password,
+					faculty: user.fac,
+					phone: user.phone
+				});
+				$ionicLoading.hide();
+				$scope.modal.hide();
+				$state.go('login');
+			}).catch(function (error) {
+				alert("Error: " + error);
+				$ionicLoading.hide();
+			});
+		}else
+			alert("Please fill all details");
+
+	}
+	$scope.signIn = function(user) {
+		if (user && user.email && user.pwdForLogin) {
+			$ionicLoading.show({
+				template: 'Signing In...'
+			});
+			auth.$authWithPassword({
+				email: user.email,
+				password: user.pwdForLogin
+			}).then(function (authData) {
+				console.log("Logged in as:" + authData.uid);
+				ref.child("users").child(authData.uid).once('value', function (snapshot) {
+					var val = snapshot.val();
+					// to update angularJS $scope either use $apply or $timeout
+					$scope.$apply(function () {
+						$rootScope.fName = val;
+					});
+				});
+				$ionicLoading.hide();
+            	$state.go('menu.homepage');
+				}).catch(function (error) {
+            		alert("Authentication failed:" + error.message);
+            		$ionicLoading.hide();
+			});
+		}else
+			alert("Please enter email and password both");
+	}
+})
+
+   
+.controller('LoginCtrl', function($scope, $ionicModal, $state, $firebaseAuth, $ionicLoading, $rootScope) {
+	console.log('Login Controller Initialized');
+
+	var ref = new Firebase("https://booking-apps.firebaseio.com/");
+	var auth = $firebaseAuth(ref);
+
+$ionicModal.fromTemplateUrl('templates/signup.html', {
+	scope: $scope
+}).then(function (modal) {
+	$scope.modal = modal;
+});
+
+	$scope.createUser = function(user) {
+		console.log("Create User Function Called");
+		if (user && user.email && user.password) {
+			$ionicLoading.show({
+				template: 'Signing Up...'
+			});	
+
+			auth.$createUser({
+					fName: user.name,
+					matricNo: user.matric,
+					email: user.email,
+					password: user.password,
+					faculty: user.fac,
+					phone: user.phone
+			}).then(function (userData) {
+				alert("User created successfully!");
+				ref.child("users").child(userData.uid).set ({
+					fName: user.name,
+					matricNo: user.matric,
+					email: user.email,
+					password: user.password,
+					faculty: user.fac,
+					phone: user.phone
+				});
+				$ionicLoading.hide();
+				$scope.modal.hide();
+				$state.go('login');
+			}).catch(function (error) {
+				alert("Error: " + error);
+				$ionicLoading.hide();
+			});
+		}else
+			alert("Please fill all details");
+
+	}
+	$scope.signIn = function(user) {
+		if (user && user.email && user.pwdForLogin) {
+			$ionicLoading.show({
+				template: 'Signing In...'
+			});
+			auth.$authWithPassword({
+				email: user.email,
+				password: user.pwdForLogin
+			}).then(function (authData) {
+				console.log("Logged in as:" + authData.uid);
+				ref.child("users").child(authData.uid).once('value', function (snapshot) {
+					var val = snapshot.val();
+					// to update angularJS $scope either use $apply or $timeout
+					$scope.$apply(function () {
+						$rootScope.fName = val;
+					});
+				});
+				$ionicLoading.hide();
+            	$state.go('menu.homepage');
+				}).catch(function (error) {
+            		alert("Authentication failed:" + error.message);
+            		$ionicLoading.hide();
+			});
+		}else
+			alert("Please enter email and password both");
+	}
+})
+
+.controller('forgotCtrl', function ($scope, $state, $location,$http,$ionicPopup, $firebaseObject, Auth) {
+  var ref = new Firebase("https://booking-apps.firebaseio.com/");
+  $scope.resetpassword = function(user) {
+      if(angular.isDefined(user)){
+      Auth.resetpassword(user)
+        .then(function() {
+          //console.log("Password reset email sent successfully!");
+          $location.path('/login');
+        }, function(err) {
+           //console.error("Error: ", err);
+        });
+      }
+    };
+}
+)
+      
+.controller('informativeSectionCtrl', function($scope) {
+
+})
+   
+.controller('viewScheduleCtrl', function($scope) {
+
+
+})
+   
+.controller('bookCourtCtrl', function($scope) {
+
+})
+   
+.controller('profileCtrl', function($scope) {
+
+})
+   
+.controller('homepageCtrl', function($scope) {
+
+})
+
+.controller('futInfoCtrl', function($scope) {
+
+})
+
+.controller('menuCtrl', function($scope) {
+	$scope.$on('$ionicView.beforeEnter', function (e, data) {
+    if (data.enableBack) {
+        $scope.$root.showMenuIcon = true;
+    } else {
+        $scope.$root.showMenuIcon = false;
+    }
+});
+})
+ 

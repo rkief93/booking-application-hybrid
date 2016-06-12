@@ -1,0 +1,30 @@
+<ion-view title="Login" id="page5">
+    <ion-content padding="true"> <!-- class="has-header" -->
+        <div class="list text-center padding">
+        <i class="icon ion-ios-game-controller-b larger positive"></i>
+        </div>
+          <div class="list list-insert">
+
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Matric No.</span>
+              <input type="text" ng-model="user.matric" placeholder="Matric No."
+              >
+            </label>
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Password</span>
+              <input type="password" ng-model="user.pwdForLogin" placeholder="Password"
+              >
+            </label>
+          </div>
+          <div class="padding-top">
+            <button ng-click="signIn()" class="button button-block button-positive activated">
+                Login
+            </button>
+            <p class="text-center padding-top">
+                <a href="#/forgot" class="button button-clear button-positive">Forgot password</a>
+                <a href="#/signup" class="button button-clear button-positive">Create an account</a>
+          </div>
+        </form>
+    </ion-content>
+</ion-view>
+ 

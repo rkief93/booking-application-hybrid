@@ -1,0 +1,23 @@
+<ion-view title="Homepage" id="page16" style="background-color:#505058;">
+    <ion-content padding="true" style="background: url(img/abc.jpg) no-repeat 
+		    center center fixed;
+		    -webkit-background-size: cover;
+		    -moz-background-size: cover;
+		    -o-background-size: cover;
+		    background-size: cover;" scroll="true" class="has-header">
+
+		    <div class="spacer" style="width: 200px; height: 204px;"></div>
+		    <div class="card" ng-repeat="detail in announcementDetails | filter:form.searchDetail" >
+			    <div class="item item-divider" style="background-color:#839192;">
+			        Announcement :
+			    </div>
+	            <div class="item item-text-wrap" style="background-color:#AAB7B8;">
+	              {{ detail.details }}
+	            </div>
+		     </div>
+		     <!-- <div class="spacer" style="width: 300px; height: 404px;"></div> -->
+		    <button ng-click="logout()" class="button button-block button-positive activated">
+                Logout
+            </button>
+	</ion-content>
+</ion-view>
